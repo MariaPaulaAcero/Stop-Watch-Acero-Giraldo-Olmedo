@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <style type = "text/css">
+        body{
+            background-color: #164444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .cronometro{
+            font-size:15em;
+            font-family:monospace;
+        }
+    
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+    
+        ul li{
+            list-style: none;
+            padding: 10px 0;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <div class = "botones"> 
+
+    <button onclick = "incio()">Inicio</button> 
+    <button onclick = "detener()">Detener</button> 
+    <button onclick = "reiniciar()">Reiniciar</button>  
+    </div>
+    <div class = "cronometro">00:00:00</div>
+
+    <script type="text/javascript">
+		
+		var ms = 0, s = 0, m = 0;
+		var timer;
+
+		var cronometroEl = document.querySelector('.cronometro');
+
+		function incio() {
+			if(!timer) {
+				timer = setInterval(correr, 10);
+			}
+		}
+
+		function correr() {
+			cronometroEl.textContent = getTimer();
+			ms++;
+			if(ms == 100) {
+				ms = 0;
+				s++;
+			}
+			if(s == 60) {
+				s = 0;
+				m++;
+			}
+		}
+
+        function detenerTimer() {
+            clearInterval(timer);
+            timer = false;
+	    }
+
+	    function getTimer() {
+		    return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s) + ":" + (ms < 10 ? "0" + ms : ms);
+	    }
+
+        function detener() {
+		    detenerTimer();
+	    }
+
+        function reiniciar() {
+            detenerTimer();
+            ms = 0;
+            s = 0;
+            m = 0;
+            cronometroEl.textContent = getTimer();
+	    }
+
+	</script>
+    
+</body>
+</html>
