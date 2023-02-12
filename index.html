@@ -18,28 +18,36 @@
             font-size:15em;
             font-family:monospace;
         }
-    
-        ul {
-            margin: 0;
-            padding: 0;
+
+        .botonesCronometro  {
+            display: flex;
+            justify-content: space-between;
+            margin-right: 10px;
+            flex-direction: row;
+            justify-content: center;
+            height: 7vh;
+            
+        }
+
+        .flex-item {
+            margin-right: 40px;
+            background-color: aquamarine;
+            border: 2px solid black;
+            border-radius: 10px;
+            font-weight: bold;
         }
     
-        ul li{
-            list-style: none;
-            padding: 10px 0;
-        }
-    
+
     </style>
 </head>
 <body>
-
-    <div class = "botones"> 
-
-    <button onclick = "incio()">Inicio</button> 
-    <button onclick = "detener()">Detener</button> 
-    <button onclick = "reiniciar()">Reiniciar</button>  
-    </div>
     <div class = "cronometro">00:00:00</div>
+
+    <div class = "botonesCronometro"> 
+    <button class="flex-item" onclick = "incio()">Inicio</button> 
+    <button class="flex-item" onclick = "detener()">Detener</button> 
+    <button class="flex-item" onclick = "reiniciar()">Reiniciar</button>  
+    </div>
 
     <script type="text/javascript">
 		
@@ -89,6 +97,5 @@
 	    }
 
 	</script>
-    
 </body>
 </html>
